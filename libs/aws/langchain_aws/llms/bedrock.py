@@ -130,6 +130,8 @@ class LLMInputOutputAdapter:
                 input_body["prompt"] = _human_assistant_format(prompt)
                 if "max_tokens_to_sample" not in input_body:
                     input_body["max_tokens_to_sample"] = 1024
+        elif provider == "cohere":
+            input_body["message"] = prompt
         elif provider in ("ai21", "cohere", "meta", "mistral"):
             input_body["prompt"] = prompt
         elif provider == "amazon":
